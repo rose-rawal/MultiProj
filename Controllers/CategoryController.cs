@@ -34,13 +34,26 @@ namespace MultiProj.Controllers
                 ModelState.AddModelError("name", "Name cannot be same as order id");
                 return View();
             }
-            if(data != null) {
+            if (data != null) {
                 _context.Categories.Add(data);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View();
-            
+
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id) {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var category=_context.Categories.FirstOrDefault(c=>c.CategoryId == id);
+            if (category == null) {
+                return NotFound();
+            }
+            return View(category); 
         }
     }
 }

@@ -5,7 +5,7 @@
     <form method="post">
         <div>
             <div class="row">
-                <div asp-validation-summary="All" class="text-danger"></div>
+                @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
                 <div class="mb-3">
                     <label asp-for="Name">Category Name</label>
                     <input asp-for="Name" type="text" class="form-control"/>
@@ -24,3 +24,9 @@
         </div>
     </form>
 </div>
+
+                    @section Scrips{
+                        @{
+                            <partial name="_ValidationScriptsPartial"/>
+                        }
+                    }
