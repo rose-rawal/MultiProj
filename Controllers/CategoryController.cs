@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiProj.Data;
 using MultiProj.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MultiProj.Controllers
 {
@@ -26,7 +27,12 @@ namespace MultiProj.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return View(data);
+            }
+            if (data.Name == data.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "Name cannot be same as order id");
+                return View();
             }
             if(data != null) {
                 _context.Categories.Add(data);
