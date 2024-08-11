@@ -31,7 +31,7 @@
             <td>@obj.DisplayOrder</td>
                     <td class="d-flex justify-content-around">
                         <a class="btn btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id=@obj.CategoryId><i class="bi bi-pencil"></i></a>
-                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                        <a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id=@obj.CategoryId><i class="bi bi-trash"></i></a>
                     </td>
         </tr>
         }

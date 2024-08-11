@@ -37,6 +37,7 @@ namespace MultiProj.Controllers
             if (data != null) {
                 _context.Categories.Add(data);
                 _context.SaveChanges();
+                TempData["success"] = "Successfully Created Category";
                 return RedirectToAction("Index");
             }
             return View();
@@ -55,5 +56,54 @@ namespace MultiProj.Controllers
             }
             return View(category); 
         }
+
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            _context.Categories.Update(category);
+            _context.SaveChanges();
+            TempData["success"] = "Successfully Edited Category";
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Category? category = _context.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteCategory(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Category? category=_context.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            _context.Categories.Remove(category);
+            _context.SaveChanges();
+            TempData["success"] = "Successfully Deleted Category";
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
