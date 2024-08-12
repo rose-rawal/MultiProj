@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiProj", "MultiProj.csproj", "{04AD39EE-062F-4D0D-9ECF-4BC38E3411CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppRazorImplementation", "..\AppRazorImplementation\AppRazorImplementation.csproj", "{36D8F8C6-C580-4C2E-B534-3410AC10A1FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppRazorImplementation", "..\AppRazorImplementation\AppRazorImplementation.csproj", "{36D8F8C6-C580-4C2E-B534-3410AC10A1FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
