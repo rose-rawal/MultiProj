@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MultiProj.Models;
+﻿using Bulky.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace MultiProj.Data
+namespace Bulky.DataAccess.Data
 {
     public class ApplicationDbContext :DbContext
     {

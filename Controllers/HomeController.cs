@@ -1,5 +1,6 @@
+using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
-using MultiProj.Models;
+
 using System.Diagnostics;
 
 namespace MultiProj.Controllers
