@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MultiProj.Data;
+using multiProj.DataAccess.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

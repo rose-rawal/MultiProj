@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiProj.Data;
-using MultiProj.Models;
+using multiProj.DataAccess.Data;
+using multiProj.Models.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace MultiProj.Controllers

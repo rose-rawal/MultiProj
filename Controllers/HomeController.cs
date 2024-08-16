@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using MultiProj.Models;
+using multiProj.Models.Models;
 using System.Diagnostics;
 
 namespace MultiProj.Controllers
