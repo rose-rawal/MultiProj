@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using multiproj.DataAccess.Repository.IRepository;
 using multiProj.DataAccess.Data;
 using multiProj.Models.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace MultiProj.Controllers
+namespace MultiProj.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public CategoryController(ApplicationDbContext context)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Category> categoryList = _context.Categories.ToList();
+            List<Category> categoryList = _unitOfWork.Category.GetAll().ToList();
             return View(categoryList);
         }
         [HttpGet]
@@ -34,9 +35,10 @@ namespace MultiProj.Controllers
                 ModelState.AddModelError("name", "Name cannot be same as order id");
                 return View();
             }
-            if (data != null) {
-                _context.Categories.Add(data);
-                _context.SaveChanges();
+            if (data != null)
+            {
+                _unitOfWork.Category.Add(data);
+                _unitOfWork.Save();
                 TempData["success"] = "Successfully Created Category";
                 return RedirectToAction("Index");
             }
@@ -45,16 +47,18 @@ namespace MultiProj.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id) {
+        public IActionResult Edit(int id)
+        {
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
-            var category=_context.Categories.FirstOrDefault(c=>c.CategoryId == id);
-            if (category == null) {
+            var category = _unitOfWork.Category.GetValue(u => u.CategoryId == id);
+            if (category == null)
+            {
                 return NotFound();
             }
-            return View(category); 
+            return View(category);
         }
 
         [HttpPost]
@@ -64,8 +68,8 @@ namespace MultiProj.Controllers
             {
                 return BadRequest();
             }
-            _context.Categories.Update(category);
-            _context.SaveChanges();
+            _unitOfWork.Category.Update(category);
+            _unitOfWork.Save();
             TempData["success"] = "Successfully Edited Category";
 
             return RedirectToAction("Index");
@@ -78,7 +82,7 @@ namespace MultiProj.Controllers
             {
                 return NotFound();
             }
-            Category? category = _context.Categories.Find(id);
+            Category? category = _unitOfWork.Category.GetValue(u => u.CategoryId == id);
             if (category == null)
             {
                 return NotFound();
@@ -93,13 +97,13 @@ namespace MultiProj.Controllers
             {
                 return NotFound();
             }
-            Category? category=_context.Categories.Find(id);
+            Category? category = _unitOfWork.Category.GetValue(u => u.CategoryId == id);
             if (category == null)
             {
                 return NotFound();
             }
-            _context.Categories.Remove(category);
-            _context.SaveChanges();
+            _unitOfWork.Category.Remove(category);
+            _unitOfWork.Save();
             TempData["success"] = "Successfully Deleted Category";
 
             return RedirectToAction("Index");

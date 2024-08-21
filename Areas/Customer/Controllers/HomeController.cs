@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using multiProj.Models.Models;
 using System.Diagnostics;
 
-namespace MultiProj.Controllers
+namespace MultiProj.Areas.Customer.Controllers
 {
     public class HomeController : Controller
     {
