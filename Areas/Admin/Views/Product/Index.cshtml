@@ -1,0 +1,10 @@
+﻿@model List<Product>
+
+<h2>All Products</h2>
+@foreach(var data in Model.OrderBy(d => d.Title))
+{
+    <div>
+        <p>@data.Author</p>
+        <p>@data.ISBN</p>
+    </div>
+}
