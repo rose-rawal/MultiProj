@@ -1,10 +1,46 @@
 ﻿@model List<Product>
 
-<h2>All Products</h2>
-@foreach(var data in Model.OrderBy(d => d.Title))
-{
-    <div>
-        <p>@data.Author</p>
-        <p>@data.ISBN</p>
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="my-heading">Product List</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-area="Admin" asp-controller="Product" asp-action="CreateProduct" class="btn btn-primary">
+                <i class="bi bi-plus-square"></i> Create New Product
+            </a>
+        </div>
     </div>
-}
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Book Title
+                </th>
+                <th>
+                    ISBN
+                </th>
+                <th>
+                    Author
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.Title))
+            {
+                <tr>
+                    <td>@obj.Title</td>
+                    <td>@obj.ISBN</td>
+                    <td>@obj.Author</td>
+                    <td class="d-flex justify-content-around">
+                        <a class="btn btn-primary" asp-area="Admin" asp-controller="Product" asp-action="EditProduct" asp-route-id=@obj.ProductId><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-danger" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id=@obj.ProductId><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,46 @@
+﻿@model Product
+
+<h1>Create Product</h1>
+<form method="post">
+    <div>
+        <label asp-for="Title">Title</label>
+        <input type="text" asp-for="Title" />
+        <span asp-validation-for="Title" />
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <input type="text" asp-for="Description" />
+        <span asp-validation-for="Description" />
+    </div>
+    <div>
+        <label asp-for="ISBN">ISBN</label>
+        <input type="text" asp-for="ISBN" />
+        <span asp-validation-for="ISBN" />
+    </div>
+    <div>
+        <label asp-for="Author">Author</label>
+        <input type="text" asp-for="Author" />
+        <span asp-validation-for="Author" />
+    </div>
+    <div>
+        <label asp-for="ListPrice">List Price</label>
+        <input type="number" asp-for="ListPrice" />
+        <span asp-validation-for="ListPrice" />
+    </div>
+    <div>
+        <label asp-for="Price">Price</label>
+        <input type="number" asp-for="Price" />
+        <span asp-validation-for="Price" />
+    </div>
+    <div>
+        <label asp-for="Price50">Price 50</label>
+        <input type="number" asp-for="Price50" />
+        <span asp-validation-for="Price50" />
+    </div>
+    <div>
+        <label asp-for="Price100">Price 100</label>
+        <input type="number" asp-for="Price100" />
+        <span asp-validation-for="Price100" />
+    </div>
+    <button type="submit">Create</button>
+</form>
